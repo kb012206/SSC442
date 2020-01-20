@@ -1,5 +1,10 @@
 library(tidyverse)
 library(ggplot2)
+library(gapminder)
+gapminder
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point()
 
 ggplot2::mpg
 
@@ -21,3 +26,5 @@ ggplot(data = mpg,
 ggplot(data = mpg, 
        mapping = aes(x = displ, y = hwy, color = class))+
   geom_point()
+#In comparison, we see that compact and midsize vehicles with smaller engines have the highest hwy mileage
+#while larger vehicles with larger engines have lower hwy mileage
