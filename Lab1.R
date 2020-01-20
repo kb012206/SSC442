@@ -21,3 +21,5 @@ ggplot(data = mpg,
 ggplot(data = mpg, 
        mapping = aes(x = displ, y = hwy, color = class))+
   geom_point()
+#In comparison, we see that compact and midsize vehicles with smaller engines have the highest hwy mileage
+#while larger vehicles with larger engines have lower hwy mileage
