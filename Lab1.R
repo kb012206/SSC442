@@ -1,5 +1,10 @@
 library(tidyverse)
 library(ggplot2)
+library(gapminder)
+gapminder
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point()
 
 ggplot2::mpg
 
