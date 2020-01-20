@@ -1,18 +1,5 @@
 library(tidyverse)
 library(ggplot2)
-data = mpg
-
-# 1a
-
-p <- ggplot(data = mpg,
-            mapping = aes(x = displ, y = hwy))
-p + geom_point()
-
-# 1b
-
-p <- ggplot(data = mpg,
-            mapping = aes(x = displ, y = hwy, colour = class))
-p + geom_point()
 
 # 2
 bank <- read.csv("C:/Users/mcgui/Downloads/bank.csv")
