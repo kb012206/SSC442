@@ -31,7 +31,7 @@ unique(ameslist$GarageType)
 GarageTemp = model.matrix( ~ ameslist$GarageType - 1, data=ameslist$GarageType )
 
 ameslist <- cbind(ameslist, GarageTemp)
-##difering number of rows
+##differing number of rows
 
 nrow(ameslist)
 #1461 rows
