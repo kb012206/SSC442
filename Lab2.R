@@ -1,5 +1,6 @@
 ##Lab 2##
 
+## Backstory and Set Up - Data Exploration and Processing ##
 ameslist <- read.table("https://msudataanalytics.github.io/SSC442/Labs/data/ames.csv",
                        header = TRUE ,
                        sep = ",")
@@ -38,3 +39,9 @@ nrow(ameslist)
 
 nrow(GarageTemp)
 #1379 rows
+
+## Exercise 1 ##
+
+## Building a Model ##
+
+## Exercise 2 ##
