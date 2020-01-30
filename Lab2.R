@@ -80,6 +80,37 @@ slope = cor(Ames['GrLivArea'],Ames['SalePrice'])
 p + abline(slope,0) + geom_point()
 help(abline)
 
+## Building a Model ##
+
+attach(ames)
+lm.fit = lm(SalePrice ~ GrLivArea)
+lm.fit
+
+# What is GrLivArea?
+# GrLivArea is the grand living area that is the total square footage. 
+
+plot(SalePrice, GrLivArea)
+plot(LotArea, GrLivArea)
+plot(YearBuilt,SalePrice)
+plot(BedroomAbvGr, SalePrice)
+
+# Do you suspect that some outliers have a large influence on the data? 
+
+# I don't think there will be outliers that have a big influence because all plots have been predictable.
+# But there will certainly be outliars that have some sort of effect on plots, just not big. 
+
+# Does controlling for LotArea change the qualitative conclusions from the previous regression? 
+# What about the quantitative results? Does the direction of the change in the quantitative results make sense to you?
+
+plot(LotArea, SalePrice)
+plot(LotArea, GrLivArea)
+
+# Yes it does to a certain extent but most LotArea are around the same range with there being several outliers in the plot.
+# The results make sense how they are coming out because most homes have around the same GrLivArea and LotArea.
+# Most the plotting on the graph has creating a general area with some homes being outliers. 
+
+
+
 # exercise 2a, run regression on outside garage
 
 attach(Ames)
