@@ -66,5 +66,29 @@ garage.fit
 # exercise 2b, run regression on SalePrice with all Ames
 all.fit = lm(SalePrice ~ ., data = Ames[,-1])
 plot(all.fit)
+summary(all.fit)
+#There does seem to be a relationship between the predictors and the response.
+#The multiple r-squared is fairly high which indicates correlation and the estimated coefficients 
+#for each variable is large enough for the most part that it does seem to influence the response
 
+#MSSubClass, GarageOutside, LotArea, OverallQual, OverallCond, MasVnrArea, GrLivArea, BsmtFullBath, 
+#BsmtHalfBath, FullBath, BedroomAbvGr, KitchenAbvGr, TotRmsAbvGrd, Fireplaces, GarageCars, WoodDeckSF 
+#are all important variables since they all have p-values less than .05
+all.fit = lm(SalePrice ~ ., data = Ames[,-1])plot(all.fit)
+all.fit = lm(SalePrice ~ ., data = Ames[,-1])
+#1183, 524, and 1299 all seem to be outliers that show up on the residual plot as well as the residuals vs. leverage one
 
+cor(log(ameslist['LotArea']), ameslist['SalePrice'])
+        SalePrice
+LotArea 0.3885203
+
+> cor(log(ameslist['GrLivArea']), ameslist['SalePrice'])
+          SalePrice
+GrLivArea 0.6951181
+> cor((ameslist['GrLivArea'])**2, ameslist['SalePrice'])
+          SalePrice
+GrLivArea 0.6522667
+> cor((ameslist['GrLivArea'])**(1/2), ameslist['SalePrice'])
+          SalePrice
+GrLivArea 0.7087645
+> #log of GrLivArea has a better correlation with SalePrice than x^2 but sqrt is even better. 
