@@ -69,6 +69,7 @@ pairs(Ames[,11:22])
 # c. create a correlation matrix with these variables
 help(cor)
 cor(Ames[,11:22])
+#Yes, there is a correlation between these variables 
 
 # d. scatter plot between SalePrice and GrLivArea
 library(tidyverse)
