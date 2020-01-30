@@ -1,0 +1,25 @@
+Exercise 1 Question 1: Ames Data Set
+
+Variable Name: Id, Values: (1,2,3,4,...) (consecutively), Description: A way of classifying and ordering each row
+Variable Name: MSSubClass, Values: multiples of 10 and positive, Description: Combination of bldg.type, house.style, and year.built variables to consolidate each data point’s house information. The numbers are multiples of 10 and positive
+Variable Name: LotFrontage, Values: NA or positive integers, Description: Describes how much land their is in front of the yard
+Variable Name: LotArea, Values: positive integers or NA, Description: This is the total land area of the property
+Variable Name: OverallQual, Values: positive integers 1-10, Description: Rates the overall material and finish of the house
+Variable Name: OverallCond, Values: positive integers 1-10, Description: Rates the overall condition of the house 
+Variable Name: MasVnrArea, Values: positive integers or 0, Description: Masonry veneer type
+Variable Name: GrLivArea, Values: positive integers, Description: Aboveground living area square feet
+Variable Name: BsmtFullBath, Values: single digit positive integers, Description: How many full baths the basement has
+Variable Name: BsmtHalfBath, Values: single digit positive integers, Description: How many half baths the basement has
+Variable Name: FullBath, Values: single digit positive integers, Description: Full baths in the house above ground
+Variable Name: HalfBath, Values: single digit positive integers, Description: Half baths in the house above ground
+Variable Name: BedroomAbvGr, Values: single digit positive integers, Description: Bedrooms in the house above ground
+Variable Name: KitchenAbvGr, Values: single digit positive integers, Description: Kitchens in the house above ground
+Variable Name: TotRmsAbvGrd, Values: 0-20, Description: Total rooms in the house above ground
+Variable Name: Fireplaces, Values: single digit positive integers, Description: Fireplaces available in the home
+Variable Name: GarageCars, Values: (0,1,2,3,4), Description: How many cars the garage can hold
+Variable Name: GarageArea, Values: area, Description: Area of the garage 
+Variable Name: WoodDeckSf, Values: square feet, Description: Square footage of wood deck if the house has one
+Variable Name: PoolArea, Values: area, Description: If the house has a pool, a value is given. If there's no pool, the value is 0
+Variable Name: MiscVal, Values: unknown, Description: unknown
+Variable Name: SalePrice, Values: dollar amount, Description: Sale price of the house
+
