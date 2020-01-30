@@ -1,9 +1,31 @@
+##Lab 2##
+
+## Backstory and Set Up - Data Exploration and Processing ##
 ameslist <- read.table("https://msudataanalytics.github.io/SSC442/Labs/data/ames.csv",
                        header = TRUE,
                        sep = ",")
 
+ameslist <- read.table("https://msudataanalytics.github.io/SSC442/Labs/data/ames.csv",
+                       header = FALSE,
+                       sep = ",")
+## When we specify header = FALSE, The header row is not recognized and gets moved into the 'actual' data
+
+ameslist <- read.table("https://msudataanalytics.github.io/SSC442/Labs/data/ames.csv"
+                       sep = ",")
+
+?read.table
+## Default behavior of the function: Reads a file in table format and creates a 
+## data frame from it, with cases corresponding to lines and variables to fields in the file.
+
+ameslist <- read.table("https://msudataanalytics.github.io/SSC442/Labs/data/ames.csv",
+                       header = TRUE ,
+                       sep = ",")
+
 names(ameslist)
+#Tells us the variable names of the data
+
 typeof(ameslist)
+#Tells us that the data type is a list
 
 View(ameslist)
 
@@ -36,6 +58,7 @@ options('na.action')
 View(ameslist)
 View(GarageTemp)
 
+## Exercise 1 ##
 # 1. Prune the data
 keeps = c('Id', 'MSSubClass', 'LotFrontage', 'GarageOutside', 'LotArea', 'OverallQual', 'OverallCond', 'MasVnrArea', 'GrLivArea','BsmtFullBath','BsmtHalfBath', 'FullBath','HalfBath','BedroomAbvGr', 'KitchenAbvGr', 'TotRmsAbvGrd', 'Fireplaces','GarageCars', 'GarageArea', 'WoodDeckSF', 'PoolArea', 'MiscVal', 'SalePrice')
 Ames = ameslist[keeps]
