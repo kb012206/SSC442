@@ -41,6 +41,11 @@ nrow(GarageTemp)
 #1379 rows
 
 ## Exercise 1 ##
+#Question 1
+ames <- dplyr::select_if(ameslist, is.numeric)
+
+#Question 2
+pairs(~LotArea+YearBuilt+FullBath+HalfBath+Fireplaces+GarageCars+PoolArea+OverallQual+LotFrontage+GrLivArea+GarageArea+EnclosedPorch, data = ames)
 
 ## Building a Model ##
 
