@@ -76,4 +76,4 @@ complex_lm7 <- get_complexity(lm(SalePrice~ MSSubClass+LotArea+YearBuilt+YearRem
                                  +BsmtUnfSF+X1stFlrSF+X2ndFlrSF, ameslist))
 
 rmse_complexity_plot <- plot(c(complex_lm1,complex_lm2,complex_lm3,complex_lm4,complex_lm5,complex_lm6,complex_lm7),
-                            c(rmse_lm1,rmse_lm2,rmse_lm3,rmse_lm4,rmse_lm5,rmse_lm6,rmse_lm7), main = "Complexity vs RMSE", xlab = "Complexity", ylab = "RMSE")
+                            c(rmse_lm1,rmse_lm2,rmse_lm3,rmse_lm4,rmse_lm5,rmse_lm6,rmse_lm7), main = "RMSE vs Complexity", xlab = "Model Complexity", ylab = "RMSE")
