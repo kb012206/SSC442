@@ -281,7 +281,7 @@ RMSE_table_FINAL = data.frame(
 View(RMSE_table_FINAL)
 
 #Check to see if R^2 is in a desirable range
-#So we know whether the model is under/over fit
-r2_view <- step(fit_27,direction = "forward")
+#So we know whether the model is under/over fit at lowest Test RMSE
+r2_view <- step(fit_25,direction = "forward")
 
 summary(r2_view)
