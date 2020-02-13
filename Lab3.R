@@ -138,6 +138,11 @@ rmse_complexity_plot <- plot(c(complex_lm1,complex_lm2,complex_lm3,
                                rmse_lm13,rmse_lm14,rmse_lm15), 
                              main = "RMSE vs Complexity", xlab = "Model Complexity", ylab = "RMSE")
 
+#For this plot, we can see that RMSE drops as model complexity increases which is to be expected.
+#It continues this way with small "peaks" which could be a sign of possible uncorrelated values.
+#Despite this, we should not use the full-size model as having too large of a model, could cause
+#it to predict poorly.
+
 ## Exercise 2 ##
 
 # Test Train Split
@@ -152,6 +157,33 @@ get_rmse = function(model, data, response) {
   rmse(actual = subset(data, select = response, drop = TRUE),
        predicted = predict(model, data))
 }
+
+
+model_list = list(fit_1, fit_2, fit_3, fit_4, fit_5,fit_6, fit_7, fit_8, 
+                  fit_9, fit_10,fit_11, fit_12, fit_13, fit_14, fit_15)
+
+train_rmse = sapply(model_list, get_rmse, data = train_data, response = "SalePrice")
+test_rmse = sapply(model_list, get_rmse, data = test_data, response = "SalePrice")
+
+model_complexity = sapply(model_list, get_complexity)
+
+
+plot(model_complexity, train_rmse, type = "b",
+     ylim = c(min(c(train_rmse, test_rmse)) - 0.02,
+              max(c(train_rmse, test_rmse)) + 0.02),
+     col = "dodgerblue",
+     xlab = "Model Size",
+     ylab = "RMSE")
+lines(model_complexity, test_rmse, type = "b", col = "darkorange")
+RMSE_table = data.frame(
+  Model = c('fit_1','fit_2','fit_3','fit_4','fit_5','fit_6','fit_7',
+            'fit_8','fit_9','fit_10','fit_11','fit_12','fit_13','fit_14',
+            'fit_15'),
+  TestRMSE = test_rmse,
+  TrainRMSE = train_rmse
+)
+
+# 2. Minimize RMSE
 
 # Additional models added for increased flexibility
 fit_16 = lm(SalePrice ~ LotArea+GarageArea+GrLivArea+TotalBsmtSF+RoofStyle
@@ -240,25 +272,6 @@ train_rmse = sapply(model_list, get_rmse, data = train_data, response = "SalePri
 test_rmse = sapply(model_list, get_rmse, data = test_data, response = "SalePrice")
 
 model_complexity = sapply(model_list, get_complexity)
-
-
-plot(model_complexity, train_rmse, type = "b",
-     ylim = c(min(c(train_rmse, test_rmse)) - 0.02,
-              max(c(train_rmse, test_rmse)) + 0.02),
-     col = "dodgerblue",
-     xlab = "Model Size",
-     ylab = "RMSE")
-lines(model_complexity, test_rmse, type = "b", col = "darkorange")
-RMSE_table = data.frame(
-  Model = c('fit_1','fit_2','fit_3','fit_4','fit_5','fit_6','fit_7',
-            'fit_8','fit_9','fit_10','fit_11','fit_12','fit_13','fit_14',
-            'fit_15','fit_16','fit_17','fit_18','fit_19','fit_20','fit_21',
-            'fit_22','fit_23','fit_24','fit_25','fit_26','fit_27','fit_28'),
-  TestRMSE = test_rmse,
-  TrainRMSE = train_rmse
-)
-
-# 2. Minimize RMSE
 
 plot(model_complexity, train_rmse, type = "b",
      ylim = c(min(c(train_rmse, test_rmse)) - 0.02,
