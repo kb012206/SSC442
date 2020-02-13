@@ -3,7 +3,7 @@ library(ggplot2)
 
 ## Exercise 1 ##
 
-#Importing dataset
+# Importing dataset
 ameslist <- read.table("https://msudataanalytics.github.io/SSC442/Labs/data/ames.csv",
                        header = TRUE,
                        sep = ",")
