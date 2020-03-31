@@ -66,9 +66,28 @@ cv.glm(spam_trn, fit_over, K = 100)$delta[1]
 
 # Our conclusion stays the same as the results were not any different than our initial analysis 
 
+# Create 4 confusion matrices
 
+make_conf_mat = function(predicted, actual) {
+  table(predicted = predicted, actual = actual)
+}
 
+spam_add_pred = ifelse(predict(fit_additive, spam_tst, type = "response") > 0.5,
+                       "spam",
+                       "nonspam")
+spam_caps_pred = ifelse(predict(fit_caps, spam_tst, type = "response") > 0.5,
+                       "spam",
+                       "nonspam")
+spam_over_pred = ifelse(predict(fit_over, spam_tst, type = "response") > 0.5,
+                       "spam",
+                       "nonspam")
+spam_select_pred = ifelse(predict(fit_selected, spam_tst, type = "response") > 0.5,
+                       "spam",
+                       "nonspam")
 
+(conf_mat_addi = make_conf_mat(predicted = spam_add_pred, actual = spam_tst$type))
+(conf_mat_caps = make_conf_mat(predicted = spam_caps_pred, actual = spam_tst$type))
+(conf_mat_over = make_conf_mat(predicted = spam_over_pred, actual = spam_tst$type))
+(conf_mat_selc = make_conf_mat(predicted = spam_select_pred, actual = spam_tst$type))
 
-
-
+table(spam_tst$type) / nrow(spam_tst)
