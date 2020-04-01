@@ -91,3 +91,16 @@ spam_select_pred = ifelse(predict(fit_selected, spam_tst, type = "response") > 0
 (conf_mat_selc = make_conf_mat(predicted = spam_select_pred, actual = spam_tst$type))
 
 table(spam_tst$type) / nrow(spam_tst)
+
+## Exercise 2 ##
+
+bank <- read.csv('https://msudataanalytics.github.io/SSC442/Labs/data/bank.csv')
+
+set.seed(42)
+bank_idx <- sample(nrow(bank), 1000)
+bank_trn = bank[bank_idx, ]
+bank_tst = bank[-bank_idx, ]
+
+bank_log <- glm(y ~., data = bank_trn, family = binomial)
+
+cv <- cv.glm(bank_trn, bank_log, K=10)$delta[1]
