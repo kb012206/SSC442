@@ -104,3 +104,5 @@ bank_tst = bank[-bank_idx, ]
 bank_log <- glm(y ~., data = bank_trn, family = binomial)
 
 cv <- cv.glm(bank_trn, bank_log, K=10)$delta[1]
+
+#summary(bank_log)
