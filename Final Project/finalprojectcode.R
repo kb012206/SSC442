@@ -52,4 +52,13 @@ b <- ggplot(temps, aes(x=F_temp,y=Nonviolent))+
                            temps$Nonviolent), parse = TRUE)
 
 plot_grid(a, b, labels = "AUTO")
-  
+ 
+id <- c(1:8)
+state <- c("Alabama","Arizona","Maine","Oregon","Utah", "Vermont","Virginia", "Washington")
+tree <- c(.64,.15,.86,.52,.17,.81,.55,.33)
+df <- data.frame(id,state,tree)
+print(df)
+
+library(ggplot2)
+ggplot(data=df,aes(x=state,y=tree))+geom_bar(stat="identity",fill="blue")
+
