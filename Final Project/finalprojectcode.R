@@ -62,6 +62,8 @@ print(df)
 library(ggplot2)
 ggplot(data=df,aes(x=state,y=tree))+geom_bar(stat="identity",fill="blue")
 
+
+#Model
 ViolentCrime <- lm( Violent ~ F_temp, data = STATE_CRIME_DATA)
 
 NonviolentCrime <- lm( Nonviolent ~ F_temp, data = STATE_CRIME_DATA)
