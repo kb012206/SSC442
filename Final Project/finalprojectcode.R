@@ -53,17 +53,37 @@ b <- ggplot(temps, aes(x=F_temp,y=Nonviolent))+
 
 plot_grid(a, b, labels = "AUTO")
  
+#treecover data
 id <- c(1:8)
 state <- c("Alabama","Arizona","Maine","Oregon","Utah", "Vermont","Virginia", "Washington")
 tree <- c(.64,.15,.86,.52,.17,.81,.55,.33)
-df <- data.frame(id,state,tree)
+#Crime averages reported per 100k people in 2018
+violcrime <- c(519.6,474.9,112.1,285.5,172,200,311.5,289.9)
+nonviolcrime <- c(2817.2,2676.8,1357.8,2894,2377.5,1283.1,1665.5,2946.2)
+df <- data.frame(id,state,tree, violcrime, nonviolcrime)
 print(df)
 
+#tree cover plot
 library(ggplot2)
 ggplot(data=df,aes(x=state,y=tree))+geom_bar(stat="identity",fill="blue")
 
 
-#Multiple Regression Model
-ViolentCrime <- lm( Violent ~ F_temp + tree, data = STATE_CRIME_DATA)
+#Temperature regression
+ViolentCrime <- lm( Violent ~ F_temp , data = STATE_CRIME_DATA)
 
-NonviolentCrime <- lm( Nonviolent ~ F_temp + tree, data = STATE_CRIME_DATA)
+NonviolentCrime <- lm( Nonviolent ~ F_temp , data = STATE_CRIME_DATA)
+
+#Tree cover regression
+ViolentCrime1 <- lm(violcrime ~ tree, data = df)
+NonViolentCrime1 <- lm(nonviolcrime ~ tree, data = df)
+
+summary(ViolentCrime1)
+summary(ViolentCrime)
+#Scatter plot of average crime rate per stae
+ggplot(df, aes(x=state)) + 
+  geom_point(aes(y = violcrime)) + 
+  geom_point(aes(y = nonviolcrime))
+  
+summary(NonViolentCrime1)
+summary(NonviolentCrime)
+
