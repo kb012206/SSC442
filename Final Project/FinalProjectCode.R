@@ -40,19 +40,19 @@ a <- ggplot(temps, aes(x=F_temp, y=Violent))+
   geom_point()+geom_smooth(method=lm,se=FALSE)+
   labs(title='Violent Crime (Virginia)',x='Temperature (F)', y='Number of reported crimes')+
   geom_text(x = 3, y = 3,
-          label = corr_eqn(temps$F_temp,
-                           temps$Violent), parse = TRUE)
+            label = corr_eqn(temps$F_temp,
+                             temps$Violent), parse = TRUE)
 
 
 b <- ggplot(temps, aes(x=F_temp,y=Nonviolent))+
   geom_point()+geom_smooth(method=lm,se=FALSE)+
   labs(title='Non-Violent Crime (Virginia)',x='Temperature (F)', y='Number of reported crimes')+
   geom_text(x = 3, y = 3,
-          label = corr_eqn(temps$F_temp,
-                           temps$Nonviolent), parse = TRUE)
+            label = corr_eqn(temps$F_temp,
+                             temps$Nonviolent), parse = TRUE)
 
 plot_grid(a, b, labels = "AUTO")
- 
+
 #treecover data
 id <- c(1:8)
 state <- c("Alabama","Arizona","Maine","Oregon","Utah", "Vermont","Virginia", "Washington")
@@ -83,7 +83,17 @@ summary(ViolentCrime)
 ggplot(df, aes(x=state)) + 
   geom_point(aes(y = violcrime)) + 
   geom_point(aes(y = nonviolcrime))
-  
+
 summary(NonViolentCrime1)
 summary(NonviolentCrime)
 
+#Creating visualization for linear regression model
+install.packages("devtools")
+devtools::install_github("cardiomoon/ggiraphExtra")
+require(moonBook)
+require(ggplot2)
+ggplot(df,aes(y=violcrime,x=tree))+geom_point()+geom_smooth(method="lm")
+ggplot(STATE_CRIME_DATA,aes(y=Violent,x= F_temp))+geom_point()+geom_smooth(method="lm")
+
+ggplot(df,aes(y=nonviolcrime,x=tree))+geom_point()+geom_smooth(method="lm")
+ggplot(STATE_CRIME_DATA,aes(y=Nonviolent,x= F_temp))+geom_point()+geom_smooth(method="lm")
